@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Chocolate Pringles Clicker</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <main class="game" aria-labelledby="gameTitle">
+      <div class="party-lights" aria-hidden="true">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <div class="sprinkle-field" aria-hidden="true">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <header class="hud">
+        <div class="rank-badge">
+          <span class="label">Rank</span>
+          <strong id="rankName">No Rank</strong>
+        </div>
+        <div class="boost-panel">
+          <span class="label">Per Click</span>
+          <strong id="clickValue">+1</strong>
+        </div>
+        <div class="score-panel">
+          <span class="label">Points</span>
+          <strong id="points">0</strong>
+        </div>
+        <button id="battlecardButton" class="battlecard-button" type="button">Battlecard</button>
+        <button id="resetButton" class="reset-button" type="button">Reset</button>
+      </header>
+
+      <section class="stage">
+        <div id="rankUnlock" class="rank-unlock" aria-live="polite">
+          <span id="rankIcon" class="rank-icon">C</span>
+          <strong id="rankUnlockText">Chocolate Pringles</strong>
+        </div>
+        <div class="decor-strip decor-left" aria-hidden="true">
+          <span>CRUNCH</span>
+          <span>CHOCO</span>
+          <span>CLICK</span>
+        </div>
+        <div class="decor-strip decor-right" aria-hidden="true">
+          <span>BOOST</span>
+          <span>GLOW</span>
+          <span>RANK</span>
+        </div>
+        <div class="wall-pet pet-left" aria-hidden="true">
+          <span class="pet-ear ear-one"></span>
+          <span class="pet-ear ear-two"></span>
+          <span class="pet-face">:3</span>
+          <span class="pet-compliment" id="leftCompliment">crispy work</span>
+        </div>
+        <div class="wall-pet pet-right" aria-hidden="true">
+          <span class="pet-ear ear-one"></span>
+          <span class="pet-ear ear-two"></span>
+          <span class="pet-face">^_^</span>
+          <span class="pet-compliment" id="rightCompliment">keep crunching</span>
+        </div>
+
+        <div class="title-block">
+          <p class="eyebrow">Crunch. Melt. Repeat.</p>
+          <h1 id="gameTitle">Chocolate Pringles Clicker</h1>
+          <p id="nextGoal" class="next-goal">100 points to more chocolate.</p>
+        </div>
+
+        <button id="snackButton" class="snack-button" type="button" aria-label="Click the chocolate Pringles">
+          <span class="snack-shadow"></span>
+          <span class="snack-aura"></span>
+          <span class="snack-stack" aria-hidden="true">
+            <span class="chip chip-one">
+              <span class="chocolate chocolate-one"></span>
+              <span class="shine"></span>
+            </span>
+            <span class="chip chip-two">
+              <span class="chocolate chocolate-two"></span>
+              <span class="shine"></span>
+            </span>
+            <span class="chip chip-three">
+              <span class="chocolate chocolate-three"></span>
+              <span class="shine"></span>
+            </span>
+            <span class="chip chip-four">
+              <span class="chocolate chocolate-four"></span>
+              <span class="shine"></span>
+            </span>
+          </span>
+        </button>
+
+        <div id="floatingPoints" class="floating-points" aria-hidden="true"></div>
+        <div id="proBurst" class="pro-burst" aria-hidden="true"></div>
+      </section>
+
+      <footer class="game-footer">
+        <section class="leaderboard-panel" aria-labelledby="leaderboardTitle">
+          <div class="panel-heading">
+            <div>
+              <span class="label">Online</span>
+              <h2 id="leaderboardTitle">Leaderboard</h2>
+            </div>
+            <strong id="onlineStatus">Local</strong>
+          </div>
+          <ol id="leaderboardList" class="leaderboard-list"></ol>
+        </section>
+
+        <section class="progress-wrap">
+        <div class="progress-copy">
+          <span id="chocoStageLabel">Chocolate stage 0 / 10</span>
+          <span id="rankProgressLabel">1000 points to Bronze 2</span>
+        </div>
+        <div class="progress-track" aria-hidden="true">
+          <span id="progressBar"></span>
+        </div>
+        <div class="mini-lamps" aria-hidden="true">
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        </section>
+      </footer>
+
+      <section id="accountModal" class="modal-backdrop" aria-labelledby="accountTitle" aria-modal="true" role="dialog">
+        <form id="accountForm" class="account-card">
+          <span class="label">Player Account</span>
+          <h2 id="accountTitle">Create your battlecard</h2>
+          <p>Pick a name and your favorite chocolate color before the grind starts.</p>
+          <label>
+            Player name
+            <input id="playerNameInput" name="playerName" maxlength="18" autocomplete="username" required>
+          </label>
+          <label>
+            Password
+            <input id="passwordInput" name="password" type="password" maxlength="40" autocomplete="current-password" required>
+          </label>
+          <label>
+            Favorite chocolate color
+            <select id="favoriteColorInput" name="favoriteColor">
+              <option value="#8a4a2f">Classic Chocolate</option>
+              <option value="#39ff14">Radioactive Green</option>
+              <option value="#e63728">Legendary Red</option>
+              <option value="#f27f23">Masters Orange</option>
+              <option value="#66d7ef">Diamond Blue</option>
+              <option value="#f277a1">Exotic Pink</option>
+            </select>
+          </label>
+          <button type="submit">Start playing</button>
+          <p id="accountMessage" class="account-message">Online server not connected yet, so this account will save locally.</p>
+        </form>
+      </section>
+
+      <section id="battlecardModal" class="modal-backdrop is-hidden" aria-labelledby="battlecardTitle" aria-modal="true" role="dialog">
+        <div class="battlecard-modal-card">
+          <div id="battlecardPreview" class="battlecard-preview">
+            <span class="label">Battlecard</span>
+            <h2 id="battlecardTitle">Player</h2>
+            <strong id="battlecardRank">No Rank</strong>
+            <p id="battlecardScore">0 points</p>
+          </div>
+          <button id="closeBattlecard" type="button">Close</button>
+        </div>
+      </section>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
